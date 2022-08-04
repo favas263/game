@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+		<style>
+		
+			html{ height:100%; }
+			
+			body
+			{
+				background-image:linear-gradient(red,yellow,yellow,#00ff00);
+			}
+		
+			td
+			{
+				text-align:center;
+				height:115px;
+				font-size:95px;
+				font-weight:bold;
+				border:2px solid black;
+			}
+			
+			table
+			{
+				border-collapse:collapse;
+				border-style:hidden;
+			}
+			
+			#tic
+			{
+				font-size:40px;
+				font-weight:bold;
+				color:#00ff00;
+				letter-spacing:5px;
+				text-shadow:1px 1px 3px black,0 0 25px red,0 0 5px darkblue;
+				font-family:serif;
+				padding:0 29px;
+			}
+			
+			#div
+			{
+				position:fixed;
+				background-image:linear-gradient(rgba(0,255,0,0.8),rgba(17,242,212,0.8),rgba(255,0,0,0.7));
+				width:210px;
+				height:300px;
+				margin:30px 40px;
+				border-radius:10%;
+				padding:20px 30px;
+				box-shadow:0 0 18px #000000;
+				display:none;
+			}
+			
+			#button
+			{
+				position:absolute;
+				font-weight:bold;
+				border:1px solid black;
+				border-radius:12px;
+				background-color:#00ff00;
+				box-shadow:0 0 9px #0000ff;
+				bottom:12px;
+				left:90px;
+				padding:6px 9px;
+			}
+			
+			#head
+			{
+				position:absolute;
+				left:230px;
+				display:inline;
+				color:#00ff00;
+				background-color:red;
+				padding:0px 15px;
+				border-radius:3px;
+			}
+			
+			#new
+			{
+				font-weight:bold;
+				border:1px solid black;
+				border-radius:12px;
+				background-color:#00ff00;
+				box-shadow:0 0 9px #0000ff;
+				padding:6px 9px;
+			}
+			
+			#player
+			{
+				background-color:#ff0005;
+				width:70px;
+				height:20px;
+				padding:10px 15px;
+				box-shadow:3px -3px #000000;
+				border-radius:20px;
+				color:#00ff00;
+				font-weight:bold;
+			}
+			
+			#win
+			{
+				font-size:140px;
+				position:absolute;
+				top:0;
+				left:85px;
+				font-family:serif;
+			}
+			
+		</style>
+	
+		<script>
+		
+			var a=[0,0,0,0,0,0,0,0,0];
+			var i=1;
+			
+			function fun(n)
+			{
+				if(a[n]==0)
+				{
+					if(i%2==0)
+					{
+						document.getElementsByTagName("td")[n].innerHTML="X";
+						document.getElementById("head").innerHTML="";
+						a[n]=11;
+						i=i+1;
+						
+						if((a[0]==11)&&(a[1]==11)&&(a[2]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[1].style.color="#0000ff";
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+						}
+						else if((a[3]==11)&&(a[4]==11)&&(a[5]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[3].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[5].style.color="#0000ff";
+						}
+						else if((a[6]==11)&&(a[7]==11)&&(a[8]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+							document.getElementsByTagName("td")[7].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[0]==11)&&(a[3]==11)&&(a[6]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[3].style.color="#0000ff";
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+						}
+						else if((a[1]==11)&&(a[4]==11)&&(a[7]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[1].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[7].style.color="#0000ff";
+						}
+						else if((a[2]==11)&&(a[5]==11)&&(a[8]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+							document.getElementsByTagName("td")[5].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[0]==11)&&(a[4]==11)&&(a[8]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[2]==11)&&(a[4]==11)&&(a[6]==11))
+						{
+							wX();
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+						}
+						
+						else if(i>=10)
+						{
+							document.getElementById("win").innerHTML="!!";
+							document.getElementById("d").innerHTML="Match tied";
+							document.getElementById("div").style.display="block";
+						}
+						document.getElementById("player").innerHTML="O 's turn";
+						document.getElementById("player").style.backgroundColor="#ff0000";
+						document.getElementById("player").style.color="#00ff00";
+					}
+					else
+					{
+						document.getElementsByTagName("td")[n].innerHTML="O";
+						document.getElementById("head").innerHTML="";
+						a[n]=22;
+						i=i+1;
+						
+						if((a[0]==22)&&(a[1]==22)&&(a[2]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[1].style.color="#0000ff";
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+						}
+						else if((a[3]==22)&&(a[4]==22)&&(a[5]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[3].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[5].style.color="#0000ff";
+						}
+						else if((a[6]==22)&&(a[7]==22)&&(a[8]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+							document.getElementsByTagName("td")[7].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[0]==22)&&(a[3]==22)&&(a[6]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+						}
+						else if((a[1]==22)&&(a[4]==22)&&(a[7]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[1].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[7].style.color="#0000ff";
+						}
+						else if((a[2]==22)&&(a[5]==22)&&(a[8]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+							document.getElementsByTagName("td")[5].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[0]==22)&&(a[4]==22)&&(a[8]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[0].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[8].style.color="#0000ff";
+						}
+						else if((a[2]==22)&&(a[4]==22)&&(a[6]==22))
+						{
+							wO();
+							document.getElementsByTagName("td")[2].style.color="#0000ff";
+							document.getElementsByTagName("td")[4].style.color="#0000ff";
+							document.getElementsByTagName("td")[6].style.color="#0000ff";
+						}
+						
+						else if(i>=10)
+						{
+							document.getElementById("win").innerHTML="!!";
+							document.getElementById("d").innerHTML="Match tied";
+							document.getElementById("div").style.display="block";
+							document.getElementById("new").style.visibility="hidden";
+						}
+						document.getElementById("player").innerHTML="X 's turn";
+						document.getElementById("player").style.backgroundColor="#00ff00";
+						document.getElementById("player").style.color="#ff0000";
+					}
+				}
+				else
+					document.getElementById("head").innerHTML="!! .. wrong tap";
+			}
+			
+			function reset()
+			{
+				for(let j=0;j<=8;j++)
+				{
+					document.getElementsByTagName("td")[j].innerHTML="";
+					document.getElementsByTagName("td")[j].style.removeProperty("color");
+					a[j]=0;
+				}
+				document.getElementById("player").innerHTML="O 's turn";
+				document.getElementById("player").style.backgroundColor="#ff0000";
+				document.getElementById("player").style.color="#00ff00";
+				document.getElementById("head").innerHTML="";
+				i=1;
+				
+			}
+			
+			function pop()
+			{
+				document.getElementById("div").style.display="none";
+				document.getElementById("new").style.visibility="visible";
+				document.getElementById("player").style.backgroundColor="#ff0000";
+				document.getElementById("player").style.color="#ff0000";
+				document.getElementById("player").style.visibility="visible";
+				reset();
+			}
+			
+			function wO()
+			{
+				document.getElementById("win").innerHTML=" O ";
+				document.getElementById("d").innerHTML="Winner is";
+				document.getElementById("div").style.display="block";
+				document.getElementById("new").style.visibility="hidden";
+				document.getElementById("player").style.visibility="hidden";
+				for(let k=0;k<=8;k++)
+					if(a[k]==0)
+						a[k]=2;
+			}
+			function wX()
+			{
+				document.getElementById("win").innerHTML=" X ";
+				document.getElementById("d").innerHTML="Winner is";
+				document.getElementById("div").style.display="block";
+				document.getElementById("new").style.visibility="hidden";
+				document.getElementById("player").style.visibility="hidden";
+				for(let k=0;k<=8;k++)
+					if(a[k]==0)
+						a[k]=2;
+			}
+			
+		</script>
+	
+	</head>
+	<body leftmargin="25px" topmargin="30px">
+	
+		<div id="tic">Tic-Tac-Toe</div>
+			<br><br>
+		<span id="player">O 's turn</span>
+		<h3 id="head"></h3>
+			<br><br><br><br>
+		
+		<div id="div" align="middle">
+			<h1 id="d">Winner is</h1>
+				<br>
+			<h1 id="win" style="color:darkblue"></h1>
+			<button onclick="pop()" id="button">New Game</button>
+		</div>
+		
+		<table width="350px" border>
+			<tr>
+				<td onclick="fun(0)" width="33%"></td>
+				<td onclick="fun(1)" width="33%"></td>
+				<td onclick="fun(2)" width="33%"></td>
+			</tr>
+			<tr>
+				<td onclick="fun(3)"></td>
+				<td onclick="fun(4)"></td>
+				<td onclick="fun(5)"></td>
+			</tr>
+			<tr>
+				<td onclick="fun(6)"></td>
+				<td onclick="fun(7)"></td>
+				<td onclick="fun(8)"></td>
+			</tr>
+		</table>
+			<br><br>
+		<button id="new" onclick="reset()">New Game</button>
+	</body>
+</html>
