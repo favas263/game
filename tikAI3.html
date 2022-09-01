@@ -242,7 +242,8 @@
 						document.getElementById("player").innerHTML="O 's turn";
 						document.getElementById("player").style.backgroundColor="#ff0000";
 						document.getElementById("player").style.color="#00ff00";
-						setTimeout(fun,1000);
+						if(i<dr)
+							setTimeout(fun,1000);
 					}
 					else
 						document.getElementById("head").innerHTML="!! .. wrong tap";
