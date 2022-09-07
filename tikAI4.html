@@ -121,19 +121,20 @@
 			.loading
 			{
 				position: absolute;
-                top: 10px;
-                width: 15px;
-                height: 15px;
-                border: 3px solid #eeff00;
-                border-top:3px solid #00ff00;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
+                		top: 10px;
+               			width: 15px;
+                		height: 15px;
+                		border: 3px solid #00ff00;
+                		border-top:3px solid #ff0000;
+				border-bottom:3px solid #ff0000;
+                		border-radius: 50%;
+                		animation: spin 1s linear infinite;
 			}
 			@keyframes spin
-            {
-                0%{transform: rotate(0deg);}
-                100%{transform: rotate(360deg)}
-            }
+            		{
+                		0%{transform: rotate(0deg);}
+                		100%{transform: rotate(360deg)}
+            		}
 			
 		</style>
 
@@ -150,7 +151,7 @@
 		
 		<div id="both">
 			<span class="zz" id="turn">Your turn</span>
-            <div class="zz" id="loader">
+            		<div class="zz" id="loader">
 				<div class="loading" style="left: 25px"></div>
 				<div class="loading" style="left: 55px"></div>
 			</div>
@@ -181,8 +182,8 @@
 
 		<script>
 
-            var i=Math.floor(Math.random()*1.99);
-            var a=[0,0,0,0,0,0,0,0,0];
+           		var i=Math.floor(Math.random()*1.99);
+           		var a=[0,0,0,0,0,0,0,0,0];
 			var dr,ai;
 			if(i==0)
 			{
@@ -267,7 +268,7 @@
 						else if(i>dr)
 						{
 							document.getElementById("win").innerHTML="Draw";
-                            document.getElementById("both").style.display="none";
+                            				document.getElementById("both").style.display="none";
 							document.getElementById("div").style.display="block";
 						}
 						document.getElementById("loader").style.display="block";
